@@ -30,12 +30,6 @@ internal class ProductsService
         _productsDatabase.Update(id,product);
     }
 
-    public Product GetCheapestProduct()
-    {
-        var products = _productsDatabase.GetAll();
-        return products.OrderBy(p => p.Price).First();
-    }
-
     public Product? GetProduct(Guid id) => _productsDatabase.Get(id);
     public Product? GetProduct(string name) => _productsDatabase.GetByName(name);
 
@@ -52,11 +46,23 @@ internal class ProductsService
         var products = _productsDatabase.GetAll();
         return products.OrderByDescending(p => p.DateAdded).First();
     }
+    public Product GetCheapestProduct()
+    {
+        var products = _productsDatabase.GetAll();
+        return products.OrderBy(p => p.Price).First();
+    }
 
     public Product? GetMostExpensiveProduct()
     {
         var products = _productsDatabase.GetAll();
-        return products.OrderBy(p => p.Price).First();
+        if (products.Any())
+        {
+            return products.OrderByDescending(p => p.Price).First();
+        }
+        else
+        {
+            return null;
+        }
     }
 
     public Product? CalculateProductPriceInDifferentCurrency()
