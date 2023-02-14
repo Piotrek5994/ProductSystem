@@ -12,6 +12,7 @@ internal class ConsoleProductOperations
     {
         while (!_exit)
         {
+            Console.WriteLine("---------------------------------");
             Console.WriteLine("Enter a command:");
             Console.WriteLine("1. Get product");
             Console.WriteLine("2. Add new product");
@@ -22,6 +23,7 @@ internal class ConsoleProductOperations
             Console.WriteLine("7. Calculate product price in different currency");
             Console.WriteLine("8. All Products");
             Console.WriteLine("9. Exit");
+            Console.WriteLine("---------------------------------");
 
             int operation = int.Parse(Console.ReadLine());
             RunOperation(operation);
@@ -140,8 +142,11 @@ internal class ConsoleProductOperations
 
     private void RenderProductData(Product product)
     {
+        Console.WriteLine("---------------------------------");
         Console.WriteLine($"Id: {product.Id}");
         Console.WriteLine($"Name: {product.Name}");
+        Console.WriteLine($"Price {product.Price}");
         Console.WriteLine($"Date added: {product.DateAdded}");
+        Console.WriteLine("---------------------------------");
     }
 }
