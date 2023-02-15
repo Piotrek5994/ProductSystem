@@ -8,7 +8,7 @@ internal class ProductsDatabase : IProductsDatabase
 
     public void Add(Product product)
     {
-        var id = Guid.NewGuid();
+        Guid id = Guid.NewGuid();
         _products.Add(id, product);
     }
 

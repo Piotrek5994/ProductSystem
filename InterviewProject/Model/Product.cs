@@ -11,6 +11,7 @@ internal class Product
     }
 
     public Guid Id { get; }
+    
 
     public double PlnPrice { get; }
 

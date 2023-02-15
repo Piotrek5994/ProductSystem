@@ -1,5 +1,8 @@
-﻿using InterviewProject.Model;
+﻿
+
+using InterviewProject.Model;
 using InterviewProject.Persistence;
+using Xunit;
 
 namespace InterviewProject.Services;
 
@@ -70,8 +73,4 @@ internal class ProductsService
        throw new NotImplementedException();
         
     }
-
-
-
-
 }
