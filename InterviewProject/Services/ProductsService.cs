@@ -2,13 +2,14 @@
 
 using InterviewProject.Model;
 using InterviewProject.Persistence;
+using System.Runtime.InteropServices;
 using Xunit;
 
 namespace InterviewProject.Services;
 
 internal class ProductsService
 {
-    private const double USD_PRICE = 1.1d;
+    private const double USD_PRICE = 1.8d;
     private const double EUR_PRICE = 4.5d;
     private const double PLN_PRICE = 1d;
 
@@ -30,7 +31,7 @@ internal class ProductsService
 
     public void UpdateProduct(Guid id, Product product)
     {
-        _productsDatabase.Update(id,product);
+        _productsDatabase.Update(id, product);
     }
 
     public Product? GetProduct(Guid id) => _productsDatabase.Get(id);
@@ -38,11 +39,18 @@ internal class ProductsService
 
     public IEnumerable<Product> GetAllProducts() => _productsDatabase.GetAll();
 
-    public double GetProductPriceInPln(Guid id) => _productsDatabase.Get(id).PlnPrice * PLN_PRICE;
-
-    public double GetProductPriceInEur(Guid id) => _productsDatabase.Get(id).PlnPrice * EUR_PRICE;
-
-    public double GetProductPriceInUsd(Guid id) => _productsDatabase.Get(id).PlnPrice * USD_PRICE;
+    public double GetProductPriceInPln(Guid id)
+    {
+        return _productsDatabase.Get(id).Price * PLN_PRICE;
+    }
+    public double GetProductPriceInEur(Guid id)
+    {
+    return _productsDatabase.Get(id).Price * EUR_PRICE;
+    }
+    public double GetProductPriceInUsd(Guid id)
+    {
+        return _productsDatabase.Get(id).Price * USD_PRICE;
+    }
 
     public Product? GetLastModifiedProduct()
     {

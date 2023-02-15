@@ -122,8 +122,8 @@ internal class ConsoleProductOperations
         var eurPrice = _productsService.GetProductPriceInEur(id);
         var usdPrice = _productsService.GetProductPriceInUsd(id);
         Console.WriteLine($"Product price in PLN: {plnPrice} zł");
-        Console.WriteLine($"Product price in EUR: {eurPrice}€");
-        Console.WriteLine($"Product price in USD: ${usdPrice}");
+        Console.WriteLine($"Product price in EUR: {eurPrice} UE");
+        Console.WriteLine($"Product price in USD: $ {usdPrice}");
 
         RenderProductData(product);
     }

@@ -1,6 +1,5 @@
-using Xunit;
-using InterviewProject.Services;
 using InterviewProject.Model;
+using InterviewProject.Services;
 
 namespace TestProject1
 {
@@ -18,7 +17,7 @@ namespace TestProject1
             //when
             productService.AddNewProduct(productName, productDescription, productPrice);
             //then
-            Assert.Equal(product, productService.GetProduct(product.Id));
+            Assert.Equal(productService.GetProduct(product.Id), product);
         }
         [Fact]
 
@@ -33,11 +32,11 @@ namespace TestProject1
             //when
             productService.AddNewProduct(productName, productDescription, productPrice);
             //then
-            Assert.Equal(product, productService.GetProduct(product.Id));
+            Assert.Equal(productService.GetProduct(product.Id), product);
         }
-   
+
         [Fact]
-        
+
         public void AddNewProduct2()
         {
             //give
@@ -49,7 +48,7 @@ namespace TestProject1
             //when
             productService.AddNewProduct(productName, productDescription, productPrice);
             //then
-            Assert.Equal(product, productService.GetProduct(product.Id));
+            Assert.Equal(productService.GetProduct(product.Id), product);
         }
 
         [Fact]
@@ -82,6 +81,53 @@ namespace TestProject1
             productService.DeleteProduct(product.Id);
             //then
             Assert.Null(productService.GetProduct(product.Id));
+        }
+        [Fact]
+
+        public void UpdateProduct()
+        {
+            //give
+            var productService = new ProductsService();
+            var productName = "Milk";
+            var productDescription = "Milk";
+            var productPrice = 10;
+            var product = new Product(productName, productDescription, productPrice);
+            //when
+            productService.AddNewProduct(productName, productDescription, productPrice);
+            productService.UpdateProduct(product.Id, product);
+            //then
+            Assert.Equal(productService.GetProduct(product.Id), product);
+        }
+        [Fact]
+        public void UpdateProduct2()
+        {
+
+            //give
+            var productService = new ProductsService();
+            var productName = "Cake";
+            var productDescription = "Cake";
+            var productPrice = 50.20;
+            var product = new Product(productName, productDescription, productPrice);
+            //when
+            productService.AddNewProduct(productName, productDescription, productPrice);
+            productService.UpdateProduct(product.Id, product);
+            //then
+            Assert.Equal(productService.GetProduct(product.Id), product);
+
+        }
+        [Fact]
+        public void GetProductByName()
+        {
+            //give
+            var productService = new ProductsService();
+            var productName = "Milk";
+            var productDescription = "Milk";
+            var productPrice = 10;
+            var product = new Product(productName, productDescription, productPrice);
+            //when
+            productService.AddNewProduct(productName, productDescription, productPrice);
+            //then
+            Assert.Equal(productService.GetProduct(productName), product);
         }
     }
 }
