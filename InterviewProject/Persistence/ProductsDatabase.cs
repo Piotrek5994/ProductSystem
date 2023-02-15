@@ -14,7 +14,17 @@ internal class ProductsDatabase : IProductsDatabase
 
     public void Delete(Guid id) => _products.Remove(id);
 
-    public Product Get(Guid id) => _products[id];
+    public Product Get(Guid id)
+    {
+        if (_products.TryGetValue(id, out Product product))
+        {
+            return product;
+        }
+        else
+        {
+            throw new KeyNotFoundException($"Product with ID {id} not found.");
+        }
+    }
 
     public IEnumerable<Product> GetAll() => _products.Values;
 
