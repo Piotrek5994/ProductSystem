@@ -10,17 +10,16 @@ internal class Product
         DateAdded = DateTime.Now;
     }
 
-    public Guid Id { get; }
-    
+    public Guid Id { get; set; }
 
-    public double PlnPrice { get; }
+    public double PlnPrice { get; set;  }
 
-    public double EurPrice { get; }
+    public double EurPrice { get; set;  }
 
-    public double UsdPrice { get; }
+    public double UsdPrice { get; set; }
 
-    public DateTime DateAdded { get; }
-    public string? Name { get; }
-    public string? Description { get; }
-    public double Price { get; }
+    public DateTime DateAdded { get; set; }
+    public string? Name { get; set; }
+    public string? Description { get; set;  }
+    public double Price { get; set; }
 }

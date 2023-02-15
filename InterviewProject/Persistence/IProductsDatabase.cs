@@ -14,7 +14,6 @@ internal interface IProductsDatabase
     IEnumerable<Product> GetAll();
     void Add(Product product);
     void Update(Guid id, Product product);
-
     //We don't need delete method but leave it just in case
     void Delete(Guid id);
 }
