@@ -17,7 +17,7 @@ namespace TestProject1
             //when
             productService.AddNewProduct(productName, productDescription, productPrice);
             //then
-            Assert.Equal(productService.GetProduct(product.Id), product);
+            Assert.Equal(productService.GetProduct(product.Name), product);
         }
         [Fact]
 
