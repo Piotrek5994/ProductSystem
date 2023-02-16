@@ -29,9 +29,17 @@ internal class ProductsService
 
     public void DeleteProduct(Guid id) => _productsDatabase.Delete(id);
 
-    public void UpdateProduct(Guid id, Product product)
+    public Product UpdateProduct(Guid id, Product product)
     {
-        _productsDatabase.Update(id, product);
+        Product entity = _productsDatabase.Get(id);
+
+        entity.Name = product.Name;
+        entity.Price = product.Price;
+        entity.Description = product.Description;
+
+        _productsDatabase.Update(id, entity);
+
+        return entity;
     }
 
     public Product? GetProduct(Guid id) => _productsDatabase.Get(id);

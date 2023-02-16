@@ -85,8 +85,8 @@ internal class ConsoleProductOperations
         Console.WriteLine("Enter Product Id");
         Guid id = Guid.Parse(Console.ReadLine());
         var product = new Product(updateName, updateDescription, updatePrice);
-        _productsService.UpdateProduct(id,product);
-        RenderProductData(product);
+        Product created = _productsService.UpdateProduct(id,product);
+        RenderProductData(created);
     }
     private void GetCheapestProduct()
     {

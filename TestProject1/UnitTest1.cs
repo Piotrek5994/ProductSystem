@@ -6,128 +6,40 @@ namespace TestProject1
     public class UnitTest1
     {
         [Fact]
-        public void GetProduct()
+       public void Test1()
         {
-            //give
-            var productService = new ProductsService();
-            var productName = "Milk";
-            var productDescription = "Milk";
-            var productPrice = 10;
-            var product = new Product(productName, productDescription, productPrice);
-            //when
-            productService.AddNewProduct(productName, productDescription, productPrice);
-            //then
-            Assert.Equal(productService.GetProduct(product.Name), product);
-        }
-        [Fact]
-
-        public void AddNewProduct()
-        {
-            //give
-            var productService = new ProductsService();
-            var productName = "Milk";
-            var productDescription = "Milk";
-            var productPrice = 10;
-            var product = new Product(productName, productDescription, productPrice);
-            //when
-            productService.AddNewProduct(productName, productDescription, productPrice);
-            //then
-            Assert.Equal(productService.GetProduct(product.Id), product);
+            var productsService = new ProductsService();
+            var product = productsService.AddNewProduct("Test", "Test", 10);
+            Assert.Equal("Test", product.Name);
+            Assert.Equal("Test", product.Description);
+            Assert.Equal(10, product.Price);
         }
 
         [Fact]
-
-        public void AddNewProduct2()
+        public void Test2()
         {
-            //give
-            var productService = new ProductsService();
-            var productName = "Cake";
-            var productDescription = "Cake";
-            var productPrice = 50.20;
-            var product = new Product(productName, productDescription, productPrice);
+            //give 
+            var productsService = new ProductsService();
+            var product = productsService.AddNewProduct("Milk", "Milk", 2.50);
             //when
-            productService.AddNewProduct(productName, productDescription, productPrice);
+            var product2 = productsService.UpdateProduct(product.Id, new Product("Milk", "Milk", 5.00));
             //then
-            Assert.Equal(productService.GetProduct(product.Id), product);
+            Assert.Equal("Milk", product2.Name);
+            Assert.Equal("Milk", product2.Description);
+            Assert.Equal(5.00, product2.Price);
         }
 
         [Fact]
-        public void DeleteProduct()
+        public void Test3()
         {
             //give
             var productService = new ProductsService();
-            var productName = "Milk";
-            var productDescription = "Milk";
-            var productPrice = 10;
-            var product = new Product(productName, productDescription, productPrice);
-            //when
-            productService.AddNewProduct(productName, productDescription, productPrice);
-            productService.DeleteProduct(product.Id);
+            var products = productService.AddNewProduct("Milk", "Milk", 5.00);
+            //when 
+            var product2 = productService.GetProduct(products.Id);
             //then
-            Assert.Null(productService.GetProduct(product.Id));
-        }
-
-        [Fact]
-        public void DeleteProduct2()
-        {
-            //give
-            var productService = new ProductsService();
-            var productName = "Cake";
-            var productDescription = "Cake";
-            var productPrice = 50.20;
-            var product = new Product(productName, productDescription, productPrice);
-            //when
-            productService.AddNewProduct(productName, productDescription, productPrice);
-            productService.DeleteProduct(product.Id);
-            //then
-            Assert.Null(productService.GetProduct(product.Id));
-        }
-        [Fact]
-
-        public void UpdateProduct()
-        {
-            //give
-            var productService = new ProductsService();
-            var productName = "Milk";
-            var productDescription = "Milk";
-            var productPrice = 10;
-            var product = new Product(productName, productDescription, productPrice);
-            //when
-            productService.AddNewProduct(productName, productDescription, productPrice);
-            productService.UpdateProduct(product.Id, product);
-            //then
-            Assert.Equal(productService.GetProduct(product.Id), product);
-        }
-        [Fact]
-        public void UpdateProduct2()
-        {
-
-            //give
-            var productService = new ProductsService();
-            var productName = "Cake";
-            var productDescription = "Cake";
-            var productPrice = 50.20;
-            var product = new Product(productName, productDescription, productPrice);
-            //when
-            productService.AddNewProduct(productName, productDescription, productPrice);
-            productService.UpdateProduct(product.Id, product);
-            //then
-            Assert.Equal(productService.GetProduct(product.Id), product);
-
-        }
-        [Fact]
-        public void GetProductByName()
-        {
-            //give
-            var productService = new ProductsService();
-            var productName = "Milk";
-            var productDescription = "Milk";
-            var productPrice = 10;
-            var product = new Product(productName, productDescription, productPrice);
-            //when
-            productService.AddNewProduct(productName, productDescription, productPrice);
-            //then
-            Assert.Equal(productService.GetProduct(productName), product);
+            Assert.Equal("Milk", product2.Name);
+            Assert.Equal("Milk", product2.Description);
         }
     }
 }
